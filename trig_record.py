@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-from recorder import *
-
 '''
 repeatedly trigger a recording for x duration from button press or similar
 '''
@@ -24,7 +22,6 @@ is_recording = 0
 duration = 10
 
 button = Button(input_pin)
-
 recorder = Recorder(REC_PATH, duration)
 
 print("ready to record!")
