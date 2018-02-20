@@ -33,7 +33,7 @@ try:
             recorder.record()
             is_recording = 1
             led.on()
-        elif is_recording == 1 and first_time == 0 and button.value == True:
+        elif is_recording == 1 and button.value == True:
             print(''.join(['done', '\n', '\n']))
             recorder.stop()
             led.off()
