@@ -8,6 +8,8 @@ repeatedly trigger a recording for x duration from button press or similar
 
 from recorder import *
 from gpiozero import Button
+from datetime import datetime
+
 
 BASE_DIR = '/home/cta/'
 
