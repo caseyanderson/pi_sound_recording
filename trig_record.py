@@ -6,7 +6,7 @@ from recorder import *
 repeatedly trigger a recording for x duration from button press or similar
 '''
 
-from video_player import *
+from recorder import *
 from gpiozero import Button
 
 BASE_DIR = '/home/cta/'
