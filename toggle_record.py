@@ -35,12 +35,12 @@ try:
             print(''.join(['done', '\n', '\n']))
             recorder.stop()
             led.off()
-    except KeyboardInterrupt:
-        print(''.join([ '\n', '\n', 'INTERRUPTED', '\n']))
-        button.close()
-        led.close()
-            if recorder.status() == 'playing':
-                print('recording is running, terminating now!')
-                recorder.stop()
-            else:
-                print('no recording running, exiting now')
+except KeyboardInterrupt:
+    print(''.join([ '\n', '\n', 'INTERRUPTED', '\n']))
+    button.close()
+    led.close()
+        if recorder.status() == 'playing':
+            print('recording is running, terminating now!')
+            recorder.stop()
+        else:
+            print('no recording running, exiting now')
