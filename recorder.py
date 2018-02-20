@@ -14,18 +14,25 @@ class Recorder():
         self.path = path
         self.process = None
 
+    def pause(self):
+        path = self.path
+        print('paused!')
+        self.process.stdin.write('\n')
+        self.process.stdin.flush()
+
     def record(self):
         path = self.path
         self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
-
-    def stop(self):
-        self.process.terminate()
 
     def status(self):
         if self.process.poll() is not None:
             return 'done'
         else:
             return 'playing'
+
+    def stop(self):
+        self.process.terminate()
+        self.process.kill()
 
     # def stop(self):
     #     self.process.stdin.write(b'q')
