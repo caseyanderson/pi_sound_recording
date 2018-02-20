@@ -32,7 +32,7 @@ print("ready to record!")
 try:
     while True:
         if is_recording == 0 and button.value == True:
-            print('button pressed, starting video')
+            print('button pressed, starting recording')
             recorder.record()
             is_recording = 1
         elif is_recording == 1:
