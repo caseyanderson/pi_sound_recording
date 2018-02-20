@@ -10,7 +10,7 @@ from datetime import datetime
 
 BASE_DIR = '/home/cta/'
 
-NAME =  'a'
+NAME =  ''
 DATE = datetime.now().strftime('%Y-%m-%d-%H-%m-%s')
 FORMAT = '.wav'
 FILENAME = ''.join([NAME, DATE, FORMAT])
