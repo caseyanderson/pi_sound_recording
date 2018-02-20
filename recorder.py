@@ -10,7 +10,7 @@ import signal
 
 class Recorder():
 
-    def __init__(self, path, dur):
+    def __init__(self, path, dur): # duration of 0 results in an "infinite" recording
         self.dur = dur
         self.path = path
         self.process = None
