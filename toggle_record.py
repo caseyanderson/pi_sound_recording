@@ -7,6 +7,7 @@ from recorder import *
 from gpiozero import Button
 from gpiozero import LED
 from datetime import datetime
+from time import sleep
 
 BASE_DIR = '/home/cta/'
 NAME =  ''
@@ -28,6 +29,7 @@ try:
             FILENAME = ''.join([NAME, DATE, FORMAT])
             REC_PATH = ''.join([BASE_DIR, FILENAME])
             recorder = Recorder(REC_PATH, duration)
+            sleep(0.5)              # unnecessary?
             recorder.record()
             is_recording = 1
             led.on()
