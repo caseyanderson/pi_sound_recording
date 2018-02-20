@@ -27,6 +27,8 @@ button = Button(input_pin)
 
 recorder = Recorder(REC_PATH, duration)
 
+print("ready to record!")
+
 try:
     while True:
         if is_recording == 0 and button.value == True:
