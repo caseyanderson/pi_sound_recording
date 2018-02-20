@@ -10,15 +10,12 @@ import signal
 
 class Recorder():
 
-    def __init__(self, path):
+    def __init__(self, path, dur):
+        self.dur = dur
         self.path = path
         self.process = None
 
     def record(self):
-        path = self.path
-        self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
-
-    def record_dur(self, dur):
         path = self.path
         dur = self.dur
         self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', '-d', dur, path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -32,16 +29,3 @@ class Recorder():
     def stop(self):
         self.process.terminate()
         self.process.kill()
-
-    # def stop(self):
-    #     self.process.stdin.write(b'q')
-    #     self.process.stdin.flush()
-
-
-
-    # def kill(self):
-    #     os.killpg(os.getpgid(self.process.pid), signal.SIGTERM)
-    #
-    # def toggle(self):
-    #     self.process.stdin.write(b'p')
-    #     self.process.stdin.flush()
