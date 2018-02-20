@@ -10,7 +10,6 @@ from recorder import *
 from gpiozero import Button
 from datetime import datetime
 
-
 BASE_DIR = '/home/cta/'
 
 NAME =  'a'
@@ -33,11 +32,11 @@ try:
         if is_recording == 0 and button.value == True:
             print('button pressed, starting video')
             recorder.record()
-            is_playing = 1
-        elif is_playing == 1:
+            is_recording = 1
+        elif is_recording == 1:
             if recorder.status() == 'done':
                 print(''.join(['done', '\n', '\n']))
-                is_playing = 0
+                is_recording = 0
 except KeyboardInterrupt:
     print(''.join([ '\n', '\n', 'INTERRUPTED', '\n']))
     button.close()
