@@ -37,6 +37,7 @@ try:
             print(''.join(['done', '\n', '\n']))
             recorder.stop()
             led.off()
+            is_recording = 0
 except KeyboardInterrupt:
     print(''.join([ '\n', '\n', 'INTERRUPTED', '\n']))
     button.close()
