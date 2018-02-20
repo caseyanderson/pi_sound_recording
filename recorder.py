@@ -11,7 +11,11 @@ import signal
 
 class Recorder():
 
-    def record(self, path):
+    def __init__(self, path):
+        self.path = path
+        self.process = None
+
+    def record(self):
         path = self.path
         self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
 
