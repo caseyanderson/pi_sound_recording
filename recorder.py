@@ -14,15 +14,14 @@ class Recorder():
         self.path = path
         self.process = None
 
-    def pause(self):
-        path = self.path
-        print('paused!')
-        self.process.stdin.write('\n')
-        self.process.stdin.flush()
-
     def record(self):
         path = self.path
-        self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', '-i', path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+        self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+
+    def record_dur(self, dur):
+        dur = self.dur
+        path = self.path
+        self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', '-d', dur, path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
 
     def status(self):
         if self.process.poll() is not None:
