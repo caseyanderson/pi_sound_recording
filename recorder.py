@@ -19,8 +19,8 @@ class Recorder():
         self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
 
     def record_dur(self, dur):
-        dur = self.dur
         path = self.path
+        dur = self.dur
         self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', '-d', dur, path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
 
     def status(self):
