@@ -14,6 +14,7 @@ NAME =  ''
 FORMAT = '.wav'
 
 input_pin = 4
+ready = 1 # is it ready to record?
 is_recording = 0
 duration = 0            # a duration of 0 results in "infinite" recording
 
