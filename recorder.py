@@ -18,13 +18,8 @@ class Recorder():
         path = self.path
         self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
 
-        def stop(self):
-            self.process.terminate()
-
-    # def record_dur(self, path, duration):
-    #     path = self.path
-    #     duration = self.duration
-    #     self.process =
+    def stop(self):
+        self.process.terminate()
 
     def status(self):
         if self.process.poll() is not None:
