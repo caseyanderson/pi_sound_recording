@@ -19,7 +19,7 @@ REC_PATH = ''.join([BASE_DIR, FILENAME])
 
 input_pin = 4
 is_recording = 0
-duration = 10
+duration = 30
 
 button = Button(input_pin)
 recorder = Recorder(REC_PATH, duration)
