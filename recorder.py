@@ -8,16 +8,13 @@ import subprocess
 import os
 import signal
 
-
 class Recorder():
 
-    def __init__(self, path):
-        self.path = path
+    def __init__(self):
         self.process = None
 
     def record(self):
-        path = self.path
-        self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+        self.process = subprocess.Popen(['arecord', '-f', 'cd', '-D', 'plughw:1', 'a.wav'], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
     # def record_dur(self, path, duration):
