@@ -23,7 +23,7 @@ led = LED(17)
 print("ready to record!")
 try:
     while True:
-        if is_recording == 0 and button.value == True:
+        if ready == 1 and is_recording == 0 and button.value == True:
             print('button pressed, setting up and starting recording')
             DATE = datetime.now().strftime('%Y-%m-%d-%H-%m-%s')
             FILENAME = ''.join([NAME, DATE, FORMAT])
@@ -31,13 +31,15 @@ try:
             recorder = Recorder(REC_PATH, duration)
             sleep(0.5)              # unnecessary?
             recorder.record()
-            is_recording = 1
             led.on()
+            ready = 0
+            is_recording = 1
         elif is_recording == 1 and button.value == True:
             print(''.join(['done', '\n', '\n']))
             recorder.stop()
             led.off()
             is_recording = 0
+            ready = 1
 except KeyboardInterrupt:
     print(''.join([ '\n', '\n', 'INTERRUPTED', '\n']))
     button.close()
