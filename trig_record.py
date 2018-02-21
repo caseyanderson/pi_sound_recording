@@ -6,6 +6,7 @@ repeatedly trigger a recording for x duration from button press or similar
 
 from recorder import *
 from gpiozero import Button
+from gpiozero import LED
 from datetime import datetime
 
 BASE_DIR = '/home/cta/'
@@ -18,10 +19,12 @@ FILENAME = ''.join([NAME, DATE, FORMAT])
 REC_PATH = ''.join([BASE_DIR, FILENAME])
 
 input_pin = 4
+led_pin = 17
 is_recording = 0
 duration = 30
 
 button = Button(input_pin)
+led = LED(led_pin)
 recorder = Recorder(REC_PATH, duration)
 
 print("ready to record!")
@@ -31,10 +34,12 @@ try:
         if is_recording == 0 and button.value == True:
             print('button pressed, starting recording')
             recorder.record()
+            led.on()
             is_recording = 1
         elif is_recording == 1:
             if recorder.status() == 'done':
                 print(''.join(['done', '\n', '\n']))
+                led.off()
                 is_recording = 0
 except KeyboardInterrupt:
     print(''.join([ '\n', '\n', 'INTERRUPTED', '\n']))
