@@ -12,11 +12,7 @@ from datetime import datetime
 BASE_DIR = '/home/cta/'
 
 NAME =  ''
-DATE = datetime.now().strftime('%Y-%m-%d-%H-%m-%s')
 FORMAT = '.wav'
-FILENAME = ''.join([NAME, DATE, FORMAT])
-
-REC_PATH = ''.join([BASE_DIR, FILENAME])
 
 input_pin = 4
 led_pin = 17
@@ -25,14 +21,19 @@ duration = 30
 
 button = Button(input_pin)
 led = LED(led_pin)
-recorder = Recorder(REC_PATH, duration)
 
 print("ready to record!")
 
 try:
     while True:
         if is_recording == 0 and button.value == True:
+
             print('button pressed, starting recording')
+            DATE = datetime.now().strftime('%Y-%m-%d-%H-%m-%s')
+            FILENAME = ''.join([NAME, DATE, FORMAT])
+            REC_PATH = ''.join([BASE_DIR, FILENAME])
+            recorder = Recorder(REC_PATH, duration)
+
             recorder.record()
             led.on()
             is_recording = 1
