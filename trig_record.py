@@ -17,7 +17,7 @@ FORMAT = '.wav'
 input_pin = 4
 led_pin = 17
 is_recording = 0
-duration = 30
+duration = 15
 
 button = Button(input_pin)
 led = LED(led_pin)
